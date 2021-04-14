@@ -5,17 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SnakeAndLadder
-{  /* UC3 :- The Player then checks for a Option. They are No Play,
-             Ladder or Snake. - Use ((RANDOM)) to check for Options - In Case of No Play the player stays in the same
-             position
-             - In Case of Ladder the player moves ahead by the number of position received in the die 
-             - In Case of Snake the player moves behind by the
+{  /* UC4 :- Repeat till the Player reaches the winning position 100. 
+             - Note In case the player position moves below 0, then the player restarts from 0
 
     */
     class SnakeAndLadder
     {
         int START_POSITION = 0; // Declare integer start position in 0
-        const int NoPlay = 0;
+        const int NoPlay = 0;       
         const int Ladder = 1;
         const int Snakle = 2;
         public void PlayGame()
@@ -34,9 +31,15 @@ namespace SnakeAndLadder
                     Console.WriteLine("You got Ladder \n Player position = " + Player); // Print player value random genrate
                     break;
                 case Snakle:
-                    Player = Die;
-                    Console.WriteLine("You gotSnake \n player position = " + Player); // Print player value random genrate
+                    Player -= Die;
+                    if (Player < START_POSITION) //Check Lessthan Start Position
+                    {
+                        Player = START_POSITION; // Player value = Start Value
+                    }
+                    Console.WriteLine("You gotSnake \n player position = " + Player);
+               
                     break;
+               
             }
             Console.WriteLine(" Player Die Roll Position :- " + Die);                   //Print Random value
             Console.WriteLine(" Single Player Start_Position:- " + START_POSITION);     //Print Start Position
